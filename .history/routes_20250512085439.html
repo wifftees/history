@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Карта: Эмиграция Бунина</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+z0pBBn3lUeRI+ZF9HYOIRN+kZoU0TW4Gs7F3zt+E="
+    crossorigin=""
+  />
+
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; }
+    #map { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-pMN3Wq7fy1bUg0PH2/h3PFG2uMi+lY1z94p+g0iKj/c="
+  crossorigin=""
+></script>
+
+<script>
+  // Инициализация карты
+  const map = L.map('map').setView([48.8584, 2.2945], 5); // Париж
+
+  // Подключение тайлов OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18,
+  }).addTo(map);
+
+  // Добавление маркера — Париж
+  L.marker([48.8584, 2.2945])
+    .addTo(map)
+    .bindPopup("<b>Париж</b><br>Бунин проживал здесь в эмиграции с 1923 года.")
+    .openPopup();
+</script>
+
+</body>
+</html>

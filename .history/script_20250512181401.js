@@ -1,0 +1,306 @@
+// const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5); 
+
+  // Подключение тайлов OpenStreetMap
+  // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  //   maxZoom: 18,
+  // }).addTo(map);
+
+  // Добавление маркера
+  const buninMarkers = [
+    L.marker([55.75489633973109, 37.59364994442082]), // moscow
+    L.marker([46.490053936275395, 30.72508082600243]), // odessa
+    L.marker([41.030089934175614, 28.97550436805806]), // stambul
+    L.marker([42.693474795488136, 23.332236740169282]), // sofia
+    L.marker([48.85632371310316, 2.2726933107712055]), // paris
+    L.marker([47.40956860447856, 0.9723149584896635]), // ambuas
+    L.marker([43.66442869645907, 6.926837948092578]), // grass
+  ]
+
+  const buninPopups = [
+    `
+      <div class="popup-content">
+        <div class="popup-title">Москва</div>
+        <div class="car">
+          <div class="img-wrap">
+              <img src="./resources/moscow_bunin_house.jpg"
+                  alt="1">
+              <img src="./resources/moscow_bunin_memor.jpg"
+                  alt="2">
+          </div>
+          <button class="btn prev">‹</button>
+          <button class="btn next">›</button>
+        </div>
+        <div class="popup-text">
+          Октябрьскую революцию 1917 года Бунин не принял решительно и категорически.
+          Он был монархист по убеждениям, человек старой дворянской культуры, категорически не принял классовую ненависть и массовое насилие.
+
+          Он писал в своих дневниках:
+          <blockquote> «Россия погибла. Не в политическом смысле — духовно. Народ, отрёкшийся от Бога, творит бессмыслицу и насилие, и ему это нравится»
+          </blockquote>
+        </div>
+      </div>
+    `,
+  `
+      <div class="popup-content">
+        <div class="popup-title">Одесса</div>
+        <div class="car">
+          <div class="img-wrap">
+              <img src="./resources/odesa_bunin_1.jpg"
+                  alt="1">
+              <img src="./resources/odesa_bunin_2.jpg"
+                  alt="2">
+              <img src="./resources/odesa_bunin_3.jpg"
+                  alt="3">
+              <img src="./resources/odesa_bunin_4.jpg"
+                  alt="4">
+          </div>
+          <button class="btn prev">‹</button>
+          <button class="btn next">›</button>
+        </div>
+        <div class="popup-text">
+          21 мая 1918 года Бунин с женой Веpой Николаевной уехали из Москвы в санитарном вагоне вместе с пленными немцами. Поезд шел с вооруженной охраной, весь затемненный, мимо таких же затемненных станций. 27 мая Бунины прибыли в Минск. От Минска до Гомеля ехали в жуткой тесноте, т. к. оказались в одном купе с 8 офицерами польского легиона. От Гомеля до Киева плыли на пароходе. В середине июня Бунин наконец достиг желанной цели — прибыл в Одессу.
+          <br>
+          <br>
+          Жизнь в Одессе оказалась тяжелой. Не было денег, не хватало пропитания, зимой нечем было отапливать жилье. Время было неспокойное: погромы, грабежи, насилие, — все это происходило регулярно. В городе то и дело менялась власть. Когда Бунины летом 1918 года только прибыли в Одессу, город был занят австрийскими войсками. Весной 1919 года в Одессу вошла Красная армия, но уже в августе того же года город был взят Добровольческой армией. Однако положение было шатким, большевики наступали. Жить становилось все тяжелее, мысли об отъезде из России не покидали Буниных. Но Иван Алексеевич не хотел эмигрировать. Он долго не мог решиться. Наконец, в начале 1920 года, под влиянием жены, друзей и обстоятельств, Бунин принял окончательное решение — уезжать.
+        </div>
+      </div>
+    `,
+  `
+      <div class="popup-content">
+        <div class="popup-title">Стамбул</div>
+        <div class="car">
+          <div class="img-wrap">
+              <img src="./resources/stambul_bunin_1.jpeg"
+                  alt="1">
+              <img src="./resources/stambul_bunin_2.webp"
+                  alt="2">
+              <img src="./resources/stambul_bunin_3.jpg"
+                  alt="3">
+          </div>
+          <button class="btn prev">‹</button>
+          <button class="btn next">›</button>
+        </div>
+        <div class="popup-text">
+          Иван Бунин и его жена прибыли в Константинополь на пароходе «Спарта», который столкнулся с множеством трудностей во время плавания. Погода ухудшалась, и волны угрожали разрушить судно. На пятый день плавания судно попало в минное поле, а капитан, будучи плохо знакомым с лоцией и часто пьяным, не мог избежать множества опасностей. Чудом пароход не подорвался. Войдя в Босфор, «Спарта» прошла мимо военных фортов и достигла Константинополя на седьмой день.
+
+          <br><br>
+
+В городе путешественников направили в холодный каменный сарай для дезинфекции, но доктор освободил Буниных от этой процедуры. Однако ночевать им пришлось в разрушенном здании, которое раньше было приютом для прокажённых. В условиях холода и скудных удобств они провели ночь среди других беженцев.
+<br><br>
+
+Утром Бунины узнали, что контрольно-паспортный пункт в Стамбуле был переполнен людьми, пытающимися получить визу для выезда в Европу. Несмотря на суматоху и напряжённую атмосферу, Бунину удалось быстро получить визы на въезд во Францию.
+
+        </div>
+      </div>
+  `,
+  `
+    <div class="leaflet-popup-content">
+      <div class="popup-header">Париж</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tour_Eiffel_Wikimedia_Commons.jpg" alt="Tour Eiffel" class="popup-img">
+      <p class="popup-text">Бунин жил здесь в эмиграции с 1923 года.</p>
+      <div class="popup-footer">
+        <p>История эмиграции Бунина</p>
+        <button class="btn-change-info">Изменить информацию</button>
+      </div>
+    </div>
+  `,
+  `
+    <div class="leaflet-popup-content">
+      <div class="popup-header">Париж</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tour_Eiffel_Wikimedia_Commons.jpg" alt="Tour Eiffel" class="popup-img">
+      <p class="popup-text">Бунин жил здесь в эмиграции с 1923 года.</p>
+      <div class="popup-footer">
+        <p>История эмиграции Бунина</p>
+        <button class="btn-change-info">Изменить информацию</button>
+      </div>
+    </div>
+  `,
+  `
+    <div class="leaflet-popup-content">
+      <div class="popup-header">Париж</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tour_Eiffel_Wikimedia_Commons.jpg" alt="Tour Eiffel" class="popup-img">
+      <p class="popup-text">Бунин жил здесь в эмиграции с 1923 года.</p>
+      <div class="popup-footer">
+        <p>История эмиграции Бунина</p>
+        <button class="btn-change-info">Изменить информацию</button>
+      </div>
+    </div>
+  `
+  ]
+
+  // const zoom = 17;
+
+  // buninMarkers.forEach((marker, i) => {
+  //   marker.addTo(map)
+  //   marker.bindPopup(buninPopups[i])
+  // })
+
+  // map.on('popupopen', function (e) {
+  //   setTimeout(() => {
+  //     const prev = document.querySelector('.prev');
+  //     const next = document.querySelector('.next');
+  //     const wrap = document.querySelector('.img-wrap');
+  //     const imgs = document.querySelectorAll('.img-wrap img');
+
+  //     let idx = 0;
+
+  //     function showImg() {
+  //         if (idx >= imgs.length) idx = 0;
+  //         if (idx < 0) idx = imgs.length - 1;
+  //         wrap.style.transform = `translateX(-${idx * 100}%)`;
+  //     }
+
+  //     next.addEventListener('click', () => {
+  //       idx++;
+  //       showImg();
+  //     });
+
+  //     prev.addEventListener('click', () => {
+  //         idx--;
+  //         showImg();
+  //     });
+
+  //   }, 500)
+  // });
+
+  let config = {
+    minZoom: 7,
+    maxZoom: 18,
+  };
+  // magnification with which the map will start
+  const zoom = 18;
+  // coordinates
+  const lat = 52.22977;
+  const lng = 21.01178;
+  
+  // coordinate array with popup text
+  const pointsA = [
+    [52.230020586193795, 21.01083755493164, "point A1"],
+    [52.22924516170657, 21.011320352554325, "point A2"],
+    [52.229511304688444, 21.01270973682404, "point A3"],
+    [52.23040500771883, 21.012146472930908, "point A4"],
+  ];
+  
+  const pointsB = [
+    [52.229314161892106, 21.012055277824405, "point B1"],
+    [52.22950144756943, 21.01193726062775, "point B2"],
+    [52.22966573260081, 21.011829972267154, "point B3"],
+    [52.2298333027065, 21.011744141578678, "point B4"],
+    [52.2299680154701, 21.01164758205414, "point B5"],
+    [52.23012572745442, 21.011583209037784, "point B6"],
+    [52.230276867580336, 21.01143836975098, "point B7"],
+    [52.23046414919644, 21.011341810226444, "point B8"],
+  ];
+  
+  // calling map
+  const map = L.map("map", config).setView([lat, lng], zoom);
+  
+  // Used to load and display tile layers on the map
+  // Most tile servers require attribution, which you can set under `Layer`
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  
+  // Extended `LayerGroup` that makes it easy
+  // to do the same for all layers of its members
+  const pA = new L.FeatureGroup();
+  const pB = new L.FeatureGroup();
+  const allMarkers = new L.FeatureGroup();
+  
+  // adding markers to the layer pointsA
+  for (let i = 0; i < pointsA.length; i++) {
+    marker = L.marker([pointsA[i][0], pointsA[i][1]]).bindPopup(pointsA[i][2]);
+    pA.addLayer(marker);
+  }
+  
+  // adding markers to the layer pointsB
+  for (let i = 0; i < pointsB.length; i++) {
+    marker = L.marker([pointsB[i][0], pointsB[i][1]]).bindPopup(pointsB[i][2]);
+    pB.addLayer(marker);
+  }
+  
+  // object with layers
+  const overlayMaps = {
+    "point A": pA,
+    "point B": pB,
+  };
+  
+  // centering a group of markers
+  map.on("layeradd layerremove", function () {
+    // Create new empty bounds
+    let bounds = new L.LatLngBounds();
+    // Iterate the map's layers
+    map.eachLayer(function (layer) {
+      // Check if layer is a featuregroup
+      if (layer instanceof L.FeatureGroup) {
+        // Extend bounds with group's bounds
+        bounds.extend(layer.getBounds());
+      }
+    });
+  
+    // Check if bounds are valid (could be empty)
+    if (bounds.isValid()) {
+      // Valid, fit bounds
+      map.flyToBounds(bounds);
+    } else {
+      // Invalid, fit world
+      // map.fitWorld();
+    }
+  });
+  
+  L.Control.CustomButtons = L.Control.Layers.extend({
+    onAdd: function () {
+      this._initLayout();
+      this._addMarker();
+      this._removeMarker();
+      this._update();
+      return this._container;
+    },
+    _addMarker: function () {
+      this.createButton("add", "add-button");
+    },
+    _removeMarker: function () {
+      this.createButton("remove", "remove-button");
+    },
+    createButton: function (type, className) {
+      const elements = this._container.getElementsByClassName(
+        "leaflet-control-layers-list"
+      );
+      const button = L.DomUtil.create(
+        "button",
+        `btn-markers ${className}`,
+        elements[0]
+      );
+      button.textContent = `${type} markers`;
+  
+      L.DomEvent.on(button, "click", function (e) {
+        const checkbox = document.querySelectorAll(
+          ".leaflet-control-layers-overlays input[type=checkbox]"
+        );
+  
+        // Remove/add all layer from map when click on button
+        [].slice.call(checkbox).map((el) => {
+          el.checked = type === "add" ? false : true;
+          el.click();
+        });
+      });
+    },
+  });
+  
+  new L.Control.CustomButtons(null, overlayMaps, { collapsed: false }).addTo(map);
+
+  
+
+  // Содержимое попапа
+
+  // Открытие попапа с содержимым
+  // marker.bindPopup(popupContent).openPopup();
+
+  // Добавление интерактивности на кнопку
+  // document.querySelector('.btn-change-info').addEventListener('click', () => {
+  //   const newText = "Бунин написал несколько своих знаменитых произведений, находясь в Париже.";
+  //   const popupText = document.querySelector('.popup-text');
+  //   popupText.textContent = newText;
+  // });
