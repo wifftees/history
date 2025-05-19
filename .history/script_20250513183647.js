@@ -20,9 +20,9 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
   ]
 
   const solMarkers = [
-    [55.76149727877829, 37.70551957431239],// moscow
-    [47.384762700644956, 8.503764506774202], // zurich
-    [43.41598285212473, -72.58958777205518], // usa
+    [55.76149727877829, 37.70551957431239] // moscow
+    [47.384762700644956, 8.503764506774202] // zurich
+    [43.41598285212473, -72.58958777205518] // usa
     [43.12338319509948, 131.92735322100881] // vlad
   ]
 
@@ -42,106 +42,12 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
         </div>
         <div class="popup-text">
             Местоположение: Лефортово, Москва, ФСБшная следственная тюрьма
-            <br><br>
 
             Контекст: Солженицын был арестован сотрудниками КГБ в Москве после выхода «Архипелага ГУЛАГ» за рубежом. В этот же день его доставили в Лефортово.
-            <br><br>
 
             Условия: камера-одиночка, строгий надзор, допросы. Однако пребывание было очень кратким — менее суток.
-            <br><br>
 
             Значение: момент окончательного разрыва с советской системой; здесь ему сообщили о лишении гражданства и подготовке к депортации.
-        </div>
-      </div>
-    `,
-    `
-      <div class="popup-content">
-        <div class="popup-title">Цюрих</div>
-        <div class="car">
-          <div class="img-wrap">
-              <img src="./resources/zurich_sol_1.webp"
-                  alt="1">
-              <img src="./resources/zurich_sol_2.webp"
-                  alt="2">
-              <img src="./resources/zurich_sol_3.webp"
-                  alt="3">
-          </div>
-          <button class="btn prev">‹</button>
-          <button class="btn next">›</button>
-        </div>
-        <div class="popup-text">
-          Время: 1974–1976, в период жизни в Европе
-          <br><br>
-
-          Местоположение: дом друзей эмигрантов, французская глубинка, поездки в Париж.
-          <br><br>
-
-          Контекст: посещения Пьера Эммануэля, публицистическая деятельность.
-          <br><br>
-
-          Условия: как гость, без постоянной прописки.
-          <br><br>
-
-          Значение: формирование отношения к европейской эмиграции, разочарование в западных леволиберальных кругах.
-          <br><br>
-        </div>
-      </div>
-    `,
-    `
-      <div class="popup-content">
-        <div class="popup-title">Кавендиш</div>
-        <div class="car">
-          <div class="img-wrap">
-              <img src="./resources/usa_sol_1.jpeg"
-                  alt="1">
-              <img src="./resources/usa_sol_2.jpg"
-                  alt="2">
-          </div>
-          <button class="btn prev">‹</button>
-          <button class="btn next">›</button>
-        </div>
-        <div class="popup-text">
-         Местоположение: Cavendish, штат Vermont, США
-         <br><br>
-
-        Точный адрес: скрывался, но известен как большой дом в лесу, рядом с горами Грин-Маунтин
-        <br><br>
-
-        Контекст: Солженицын купил здесь дом и жил с семьёй в полном уединении 18 лет. Отказался от телепередач, интервью, телефонов.
-        <br><br>
-
-        Условия: идеальные для концентрации. Библиотека, кабинет, сад. Дом сам по себе стал мифом — его называли «русским монастырём в американской глуши».
-        <br><br>
-
-        Значение: здесь были написаны важнейшие части «Красного Колеса» («Октябрь Шестнадцатого», «Ноябрь»), эссе «Жить не по лжи», «Письмо вождям Советского Союза» и др. Работал над идеей духовного возрождения России.
-        <br><br>
-        </div>
-      </div>
-    `,
-    `
-      <div class="popup-content">
-        <div class="popup-title">Владивосток</div>
-        <div class="car">
-          <div class="img-wrap">
-              <img src="./resources/vlad_sol_1.jpg"
-                  alt="1">
-          </div>
-          <button class="btn prev">‹</button>
-          <button class="btn next">›</button>
-        </div>
-        <div class="popup-text">
-Местоположение: аэропорт Кневичи, Владивосток
-<br><br>
-
-Контекст: 27 мая 1994 года Солженицын вернулся в Россию после 20 лет изгнания. Отказался лететь напрямую в Москву, выбрал маршрут Владивосток–Москва поездом (через всю страну).
-<br><br>
-
-Условия: торжественный приём, поездка по Транссибу, встречи с народом, заводами, шахтёрами.
-<br><br>
-
-Значение: возвращение не как эмигранта, а как пророка. Он наблюдал реальное состояние постсоветской России своими глазами.
-<br><br>
-        <br><br>
         </div>
       </div>
     `
@@ -435,14 +341,16 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
 
   const buninPoints = new L.FeatureGroup();
   const cvetaevaPoints = new L.FeatureGroup();
-  const solPoints = new L.FeatureGroup();
+
+  const buninColor = randomColor()
+  const cvetaevaColor = randomColor()
 
   buninMarkers.forEach((point, i) => {
     const marker = L.marker(point, {
       icon: L.divIcon({
         className: "custom-icon-marker",
         iconSize: L.point(30, 30),
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#ffff00" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#c9dfee" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
       }),
     })
     // marker.addTo(map)
@@ -461,47 +369,6 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
 
     marker.bindPopup(cvetaevaPopups[i])
     cvetaevaPoints.addLayer(marker)
-  })
-
-  map.on('popupopen', function (e) {
-    setTimeout(() => {
-      const prev = document.querySelector('.prev');
-      const next = document.querySelector('.next');
-      const wrap = document.querySelector('.img-wrap');
-      const imgs = document.querySelectorAll('.img-wrap img');
-
-      let idx = 0;
-
-      function showImg() {
-          if (idx >= imgs.length) idx = 0;
-          if (idx < 0) idx = imgs.length - 1;
-          wrap.style.transform = `translateX(-${idx * 100}%)`;
-      }
-
-      next.addEventListener('click', () => {
-        idx++;
-        showImg();
-      });
-
-      prev.addEventListener('click', () => {
-          idx--;
-          showImg();
-      });
-
-    }, 500)
-  });
-
-  solMarkers.forEach((point, i) => {
-    const marker = L.marker(point, {
-      icon: L.divIcon({
-        className: "custom-icon-marker",
-        iconSize: L.point(30, 30),
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#FF0000" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
-      }),
-    })
-
-    marker.bindPopup(solPopups[i])
-    solPoints.addLayer(marker)
   })
 
   map.on('popupopen', function (e) {
@@ -575,24 +442,19 @@ function createArrowLayer(points, layerGroup) {
 
 const arrowsBunin = new L.FeatureGroup();
 const arrowsCvetaeva = new L.FeatureGroup();
-const arrowsSol = new L.FeatureGroup();
-
 state = {
   "bunin": "add",
-  "cvetaeva": "add",
-  "sol": "add"
+  "cvetaeva": "add"
 }
 
 createArrowLayer(buninMarkers, arrowsBunin);
 createArrowLayer(cvetaevaMarkers, arrowsCvetaeva);
-createArrowLayer(solMarkers, arrowsSol);
 
 L.Control.CustomButtons = L.Control.Layers.extend({
   onAdd: function () {
     this._initLayout();
     this._addA();
     this._addB();
-    this._addC();
     this._update();
     return this._container;
   },
@@ -602,9 +464,6 @@ L.Control.CustomButtons = L.Control.Layers.extend({
   },
   _addB: function () {
     this.createButton("Цветаева", "cvetaeva", cvetaevaPoints, arrowsCvetaeva);
-  },
-  _addC: function () {
-    this.createButton("Солженицын", "sol", solPoints, arrowsSol);
   },
   createButton: function (type, className, pointLayer, arrowLayer) {
     const elements = this._container.getElementsByClassName(

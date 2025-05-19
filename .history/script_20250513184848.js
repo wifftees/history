@@ -92,10 +92,12 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
         <div class="popup-title">Кавендиш</div>
         <div class="car">
           <div class="img-wrap">
-              <img src="./resources/usa_sol_1.jpeg"
+              <img src="./resources/usa_sol_1.webp"
                   alt="1">
-              <img src="./resources/usa_sol_2.jpg"
+              <img src="./resources/zurich_sol_2.webp"
                   alt="2">
+              <img src="./resources/zurich_sol_3.webp"
+                  alt="3">
           </div>
           <button class="btn prev">‹</button>
           <button class="btn next">›</button>
@@ -114,33 +116,6 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
         <br><br>
 
         Значение: здесь были написаны важнейшие части «Красного Колеса» («Октябрь Шестнадцатого», «Ноябрь»), эссе «Жить не по лжи», «Письмо вождям Советского Союза» и др. Работал над идеей духовного возрождения России.
-        <br><br>
-        </div>
-      </div>
-    `,
-    `
-      <div class="popup-content">
-        <div class="popup-title">Владивосток</div>
-        <div class="car">
-          <div class="img-wrap">
-              <img src="./resources/vlad_sol_1.jpg"
-                  alt="1">
-          </div>
-          <button class="btn prev">‹</button>
-          <button class="btn next">›</button>
-        </div>
-        <div class="popup-text">
-Местоположение: аэропорт Кневичи, Владивосток
-<br><br>
-
-Контекст: 27 мая 1994 года Солженицын вернулся в Россию после 20 лет изгнания. Отказался лететь напрямую в Москву, выбрал маршрут Владивосток–Москва поездом (через всю страну).
-<br><br>
-
-Условия: торжественный приём, поездка по Транссибу, встречи с народом, заводами, шахтёрами.
-<br><br>
-
-Значение: возвращение не как эмигранта, а как пророка. Он наблюдал реальное состояние постсоветской России своими глазами.
-<br><br>
         <br><br>
         </div>
       </div>
@@ -442,7 +417,7 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
       icon: L.divIcon({
         className: "custom-icon-marker",
         iconSize: L.point(30, 30),
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#ffff00" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#c9dfee" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
       }),
     })
     // marker.addTo(map)
@@ -496,7 +471,7 @@ const map = L.map('map').setView([55.75489633973109, 37.59364994442082], 5);
       icon: L.divIcon({
         className: "custom-icon-marker",
         iconSize: L.point(30, 30),
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#FF0000" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="marker"><path fill-opacity="0.25" d="M16 32s1.427-9.585 3.761-12.025c4.595-4.805 8.685-.99 8.685-.99s4.044 3.964-.526 8.743C25.514 30.245 16 32 16 32z"/><path stroke="#fff" fill="#c4fa24" d="M15.938 32S6 17.938 6 11.938C6 .125 15.938 0 15.938 0S26 .125 26 11.875C26 18.062 15.938 32 15.938 32zM16 6a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
       }),
     })
 
